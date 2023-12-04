@@ -1,6 +1,6 @@
 import "./App.css";
 import Listar from "./componentes/Listar";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Crear from "./componentes/Crear";
 import Editar from "./componentes/Editar";
 
@@ -10,23 +10,19 @@ function App() {
       <nav className="navbar navbar-expand navbar-light bg-light">
         <div className="nav navbar-nav">
           <Link className="nav-item nav-link active" to={"/"}>
-            Home <span className="sr-only">(current)</span>
+            Inicio
           </Link>
-          <Link className="nav-item nav-link" to={"/Crear"}>
+          <Link className="nav-item nav-link" to={"/crear"}>
             Crear Empleados
-          </Link>
-          <Link className="nav-item nav-link" to={"/Editar"}>
-            Editar Empleados
           </Link>
         </div>
       </nav>
       <div className="Container">
         <br></br>
-        <Routes>
-          <Route exact path="/" element={<Listar></Listar>}></Route>
-          <Route exact path="/Crear" element={<Crear></Crear>}></Route>
-          <Route exact path="/Editar" element={<Editar></Editar>}></Route>
-        </Routes>
+
+        <Route exact path="/" component={Listar}></Route>
+        <Route path="/crear" component={Crear}></Route>
+        <Route path="/editar/:id" component={Editar}></Route>
       </div>
     </Router>
   );
